@@ -7,15 +7,19 @@
 #include <errno.h>
 #include <string.h>
 
+void rndInt(int * loc);
+
 int main(){
   srand(time(NULL));
   int ary[10];
   printf("Generating Random Numbers:\n");
   int i =0;
+  rndInt(ary);
   for(;i<10;i++){
-    ary[i] = rand();
+    //ary[i]= rand();
     printf("\tRandom %d: %d\n",i,ary[i]);
   }
+  
   printf("Creating file.txt\n");
   int fd = open("file.txt", O_CREAT | O_EXCL | O_RDWR, 0644);
   printf("File Descriptor:[%d]\n",fd);
@@ -42,4 +46,9 @@ int main(){
   }
   close(fd);
   return 0;
+}
+
+void rndInt(int * loc){
+  int fd = open("/dev/urandom", O_RDONLY);
+  read(fd,loc,40);
 }
