@@ -12,8 +12,9 @@
 int rndInt(int rnd);
 
 int main(){
-  /*
+  
   int rndSeed = open("/dev/urandom", O_RDONLY);
+  /*
   printf("Testing rndInt\n");
   int p = rndInt(rndSeed);
   printf("RandomInteger:[%d]\n",p);
@@ -32,14 +33,14 @@ int main(){
   int i =0;
   //rndInt(ary);
   for(;i<10;i++){
-    ary[i]= rand();
-    //ary[i] = rndInt(rndSeed);
+    //ary[i]= rand();
+    ary[i] = rndInt(rndSeed);
     printf("\tRandom %d: %d\n",i,ary[i]);
   }
   
   printf("Creating file.txt\n");
   //umask(0);
-  int fd = open("file.txt", O_CREAT | O_RDWR, 0666);
+  int fd = open("file.txt", O_CREAT | O_WRONLY, 0666);
   printf("File Descriptor:[%d]\n",fd);
   if( fd < 0){
     printf("Error found while attempting to create file\n");
@@ -82,7 +83,7 @@ int rndInt(int fd){
     printf("Invalid file descriptor\n");
     return -1;
   }else{
-    int * p;
+    int * p = malloc(sizeof(int));
     int err = read(fd,p,4);
     if( err < 0){
       printf("Error while getting random integers\n");
