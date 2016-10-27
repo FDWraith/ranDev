@@ -27,7 +27,7 @@ int main(){
   */
   //printf("something happened\n");
   
-  srand(time(NULL));
+  //srand(time(NULL));
   int ary[10];
   printf("Generating Random Numbers:\n");
   int i =0;
