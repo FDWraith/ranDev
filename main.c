@@ -83,12 +83,13 @@ int rndInt(int fd){
     printf("Invalid file descriptor\n");
     return -1;
   }else{
-    int * p = malloc(sizeof(int));
-    int err = read(fd,p,4);
+    //int * p = malloc(sizeof(int));
+    int p;
+    int err = read(fd,&p,4);
     if( err < 0){
       printf("Error while getting random integers\n");
     }
     //close(fd);
-    return *p;
+    return p;
   }
 }
