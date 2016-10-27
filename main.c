@@ -89,6 +89,6 @@ int rndInt(int fd){
       printf("Error while getting random integers\n");
     }
     //close(fd);
-    return abs(*p);
+    return *p;
   }
 }
